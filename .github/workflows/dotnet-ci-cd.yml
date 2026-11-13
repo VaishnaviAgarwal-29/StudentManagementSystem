@@ -39,3 +39,17 @@ jobs:
         with:
           name: dotnet-app
           path: publish
+
+    deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      environment: deploy
+      steps:
+        - name: Download artifact
+          uses: actions/download-artifact@v4
+          with:
+            name: dotnet-app
+            path: app
+
+        - name: Show downloaded files
+          run: ls -l app
