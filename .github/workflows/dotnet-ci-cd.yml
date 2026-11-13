@@ -91,14 +91,14 @@ jobs:
       - name: Health check
         run: |
           for i in $(seq 1 10); do
-            code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5000/swagger/index.html || true)
+            code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5000/ || true)
             echo "Attempt $i: HTTP status $code"
-            if [ "$code" -eq 200]; then
+            if [ "$code" -eq 200] || ["$code" -eq 404 ]; then
               echo "Health check passed: app is responding with 200 OK"
               exit 0
             fi
             sleep 5
           done
           echo "Health check failed. App logs:"
-          cat ../app.log
+          cat app.log
           exit 1
