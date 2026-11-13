@@ -93,7 +93,7 @@ jobs:
           for i in $(seq 1 10); do
             code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5000/ || true)
             echo "Attempt $i: HTTP status $code"
-            if [ "$code" -eq 200 ] || [ "$code" -eq 404 ]; then
+            if [ "$code" -eq 200 ]; then
               echo "Health check passed: app is responding with 200 OK"
               exit 0
             fi
