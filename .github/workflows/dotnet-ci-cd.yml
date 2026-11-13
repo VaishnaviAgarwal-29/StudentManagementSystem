@@ -28,6 +28,9 @@ jobs:
       - name: Build
         run: dotnet build StudentAPI/StudentAPI/StudentAPI/StudentAPI.csproj --configuration Release --no-restore
 
+      - name: Run tests
+        run: dotnet test StudentAPI/StudentAPI/StudentAPI.Tests/StudentAPI.Tests.csproj --configuration Release
+
       - name: Publish
         run: dotnet publish StudentAPI/StudentAPI/StudentAPI/StudentAPI.csproj --configuration Release --no-build --output publish
 
