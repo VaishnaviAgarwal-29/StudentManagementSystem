@@ -54,7 +54,7 @@ jobs:
 
       - name: Sonar end
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_2 }}
         run: dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"
 
       - name: Publish
